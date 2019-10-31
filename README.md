@@ -21,3 +21,8 @@ Ylläpitäjä on ainoa joka voi lisätä järjestelmään uusia kasvilajeja tai 
 - Oman kasvin lisääminen sekä nimeäminen
 - Oman kasvin merkitseminen kasvituholaisten saastuttamaksi
 
+
+## Tietokantakaavio
+
+[Tietokantakaavio](https://raw.githubusercontent.com/viltas/Huonekasvitietokanta/master/kasvitietokanta-kaavio.png)
+
