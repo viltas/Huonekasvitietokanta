@@ -23,6 +23,5 @@ Ylläpitäjä on ainoa joka voi lisätä järjestelmään uusia kasvilajeja tai 
 
 
 ## Tietokantakaavio
-
-[Tietokantakaavio](https://raw.githubusercontent.com/viltas/Huonekasvitietokanta/master/kasvitietokanta-kaavio.png)
+![Tietokantakaavio](https://raw.githubusercontent.com/viltas/Huonekasvitietokanta/master/kasvitietokanta-kaavio.png)
 
