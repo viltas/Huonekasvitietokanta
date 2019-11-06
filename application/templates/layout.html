@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Huonekasvitietokanta</title>
+  </head>
+
+  <body>
+
+      <ul>
+          <li><a href="{{ url_for('plants_index') }}">Listaa kasvit</a></li>
+          <li><a href="{{ url_for('plants_form') }}">Lisää kasvi</a></li>
+              </ul>
+
+    {% block body %}
+      <p>
+        Content.
+      </p>
+    {% endblock %}
+  </body>
+</html>

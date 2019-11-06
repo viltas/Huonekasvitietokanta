@@ -1,0 +1,21 @@
+{% extends "layout.html" %}
+
+{% block body %}
+  <table>
+    <tr>
+      <th>Kasvi</th>
+      <th>Tuholaistartunta</th>
+    </tr>
+    {% for plant in plants %}
+    <tr>
+      <td>{{ plant.name }}</td>
+      <td>{{ plant.pest }}</td>
+      <td>
+        <form method="POST" action="{{ url_for('plants_set_pest', plant_id=plant.id) }}">
+          <input type="submit" value="Merkitse tuholaiset"/>
+        </form>
+            </td>
+    </tr>
+    {% endfor %}
+  </table>
+{% endblock %}
