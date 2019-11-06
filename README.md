@@ -1,6 +1,7 @@
 # Huonekasvitietokanta (TSOHA harjoitustyö)
 
 [Heroku](https://huonekasvitietokanta.herokuapp.com)
+[User storyt](https://github.com/viltas/Huonekasvitietokanta/blob/master/documentation/userstoryt.md#user-storyt) 
 
 ## Kuvaus
 
