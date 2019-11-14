@@ -4,6 +4,8 @@
 
 [User storyt](https://github.com/viltas/Huonekasvitietokanta/blob/master/documentation/userstoryt.md#user-storyt) 
 
+Testitunnukset: k�ytt�j�nimi: monstera, salasana: deliciosa
+
 ## Kuvaus
 
 Yleinen ongelma huonekasviharrastajien piireissä on vaikeus pitää kirjaa siitä mitä kaikkia kasveja tarkalleen ottaen omistaa. Viimeistään sadannen ruukun kohdalla kasvien tieteelliset nimet alkavat valua korvista ulos, ja siksi olisikin näppärää olla olemassa jonkinlainen järjestelmä minkä kautta voisi pitää kirjaa omasta kasvikokoelmastaan. Tällainen järjestelmä toimisi myös oivana tapana etsiä uusia kasveja hankintalistalle, sillä huonekasveja ei luonnollisesti voi omistaa liian montaa.

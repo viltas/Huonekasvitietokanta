@@ -43,3 +43,6 @@ def plants_create():
     db.session().commit()
 
     return redirect(url_for("plants_index"))
+
+
+    
