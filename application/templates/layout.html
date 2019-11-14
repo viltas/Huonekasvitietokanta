@@ -4,19 +4,40 @@
     <meta charset="utf-8">
     <title>Huonekasvitietokanta</title>
   </head>
-
+  
   <body>
-    <p>Tervetuloa Huonekasvitietokantaan!</p>
-
-      <ul>
-          <li><a href="{{ url_for('plants_index') }}">Listaa kasvit</a></li>
-          <li><a href="{{ url_for('plants_form') }}">Lisää kasvi</a></li>
-              </ul>
-
-    {% block body %}
-      <p>
-        Content.
+    <p>
+      Tervetuloa Huonekasvitietokantaan!
       </p>
+
+
+    {% if current_user.is_authenticated %}
+    <p>
+Kirjautunut nimellä {{ current_user.name }}. <a href="{{ url_for('auth_logout') }}">Kirjaudu ulos</a>
+</p>
+    </p>
+    {% else %}
+    <p>
+    <a href="{{ url_for('auth_login') }}">Kirjaudu sisään</a>
+    </p>
+    <p>
+      <a href="{{ url_for('auth_new') }}">Luo tunnus</a>
+      </p>
+    <p>
+   
+      </p>
+    {% endif %}
+    
+    
+    <ul>
+<li><a href="{{ url_for('plants_index') }}">Listaa kasvit</a></li>
+<li><a href="{{ url_for('plants_form') }}">Lisää kasvi</a></li>
+    </ul>
+    
+    {% block body %}
+    <p>
+Content.
+    </p>
     {% endblock %}
   </body>
-</html>
+</html>  
