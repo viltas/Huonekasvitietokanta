@@ -4,7 +4,7 @@
 
 [User storyt](https://github.com/viltas/Huonekasvitietokanta/blob/master/documentation/userstoryt.md#user-storyt) 
 
-Testitunnukset: käyttäjänimi: monstera, salasana: deliciosa
+Testitunnukset: k√§ytt√§j√§nimi: monstera, salasana: deliciosa
 
 ## Kuvaus
 
