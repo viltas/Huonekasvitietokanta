@@ -1,4 +1,8 @@
 from application import db
+from application.models import Base
+
+from sqlalchemy.sql import text
+
 
 class User(db.Model):
 
@@ -32,3 +36,18 @@ class User(db.Model):
 
     def is_authenticated(self):
         return True
+
+    
+    @staticmethod
+    def find_users_with_max_plants():
+        stmt = text("SELECT Account.id, Account.name FROM Account"
+                    " LEFT JOIN Plant ON Plant.account_id = Account.id"                   
+                    " GROUP BY Account.id"
+                    " HAVING MAX(Plant.id)")
+        res = db.engine.execute(stmt)
+
+        response = []
+        for row in res:
+            response.append({"name":row[1]})
+
+        return response

@@ -1,0 +1,25 @@
+{% extends "layout.html" %}
+
+{% block body %}
+  <table>
+    <tr>
+      <th>Suku</th>
+      <th>Epiteetti</th>
+      <th>Nimi</th>
+      <th>Vedentarve</th>
+      <th>Valontarve</th>
+      
+    </tr>
+    {% for species in species %}
+    <tr>
+      <td>{{ species.genus }}</td>
+      <td>{{ species.epithet }}</td>
+      <td>{{ species.name }}</td>
+      <td>{{ species.water }}</td>
+      <td>{{ species.light }}</td>
+      <td>      
+            </td>
+    </tr>
+    {% endfor %}
+  </table>
+{% endblock %}

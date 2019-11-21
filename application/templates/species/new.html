@@ -1,0 +1,83 @@
+{% extends "layout.html" %}
+
+{% block body %}
+<form method="POST" action="{{ url_for('species_create') }}">
+  <table>
+    <tr>
+<td>
+  {{ form.genus.label }}
+</td>
+<td>
+  {{ form.genus }}
+</td>
+<td>
+  <ul>
+    {% for error in form.genus.errors %}
+    <li>{{ error }}</li>
+    {% endfor %}
+  </ul>
+</td>
+    </tr>
+    <tr>
+<td>
+  {{ form.epithet.label }}
+</td>
+<td>
+  {{ form.epithet }}
+</td>
+<td>
+</td>
+    </tr>
+    <tr>
+        <tr>
+            <td>
+              {{ form.name.label }}
+            </td>
+            <td>
+              {{ form.name }}
+            </td>
+            <td>
+              <ul>
+                {% for error in form.name.errors %}
+                <li>{{ error }}</li>
+                {% endfor %}
+              </ul>
+            </td>
+                </tr>
+
+                <tr>
+                    <td>
+                      {{ form.water.label }}
+                    </td>
+                    <td>
+                      {{ form.water }}
+                    </td>
+                    <td>
+                      <ul>
+                        {% for error in form.water.errors %}
+                        <li>{{ error }}</li>
+                        {% endfor %}
+                      </ul>
+                    </td>
+                        </tr>
+                        <tr>
+                            <td>
+                              {{ form.light.label }}
+                            </td>
+                            <td>
+                              {{ form.light }}
+                            </td>
+                            <td>
+                              <ul>
+                                {% for error in form.light.errors %}
+                                <li>{{ error }}</li>
+                                {% endfor %}
+                              </ul>
+                            </td>
+                                </tr>                      
+<td colspan="3">
+  <input type="submit" value="Lisää uusi laji"/>
+</td>
+    </tr>
+</form>
+{% endblock %}
