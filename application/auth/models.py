@@ -43,7 +43,7 @@ class User(db.Model):
         stmt = text("SELECT Account.id, Account.name FROM Account"
                     " LEFT JOIN Plant ON Plant.account_id = Account.id"                   
                     " GROUP BY Account.id"
-                    " HAVING MAX(Plant.id)")
+                    " MAX(Plant.id)")
         res = db.engine.execute(stmt)
 
         response = []
