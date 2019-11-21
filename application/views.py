@@ -6,5 +6,5 @@ from application.auth.models import User
 
 @app.route('/')
 def index():
-    return render_template("index.html")    
+    return render_template("index.html", no_plants=User.find_users_with_no_plants())    
 #        return render_template("index.html", max_plants=User.find_users_with_max_plants())    
