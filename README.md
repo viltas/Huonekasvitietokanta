@@ -26,6 +26,7 @@ Ylläpitäjä on ainoa joka voi lisätä järjestelmään uusia kasvilajeja tai 
 - Kirjautuminen järjestelmään käyttäjänä tai ylläpitäjänä
 - Oman kasvin lisääminen sekä nimeäminen
 - Oman kasvin merkitseminen kasvituholaisten saastuttamaksi
+- Etusivulla n�kyv�t k�ytt�j�t joilla ei ole viel� kasveja
 
 
 ## Tietokantakaavio
