@@ -38,16 +38,16 @@ class User(db.Model):
         return True
 
     
-    @staticmethod
-    def find_users_with_max_plants():
-        stmt = text("SELECT Account.id, Account.name FROM Account"
-                    " LEFT JOIN Plant ON Plant.account_id = Account.id"                   
-                    " GROUP BY Account.id"
-                    " MAX(Plant.id)")
-        res = db.engine.execute(stmt)
+    #@staticmethod
+    #def find_users_with_max_plants():
+    #    stmt = text("SELECT Account.id, Account.name FROM Account"
+    #                " LEFT JOIN Plant ON Plant.account_id = Account.id"                   
+    #                " GROUP BY Account.id"
+    #                " MAX(Plant.id)")
+    #    res = db.engine.execute(stmt)
 
-        response = []
-        for row in res:
-            response.append({"name":row[1]})
+    #    response = []
+    #    for row in res:
+    #        response.append({"name":row[1]})
 
-        return response
+    #    return response
