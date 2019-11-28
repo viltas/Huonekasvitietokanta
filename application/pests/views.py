@@ -1,58 +1,54 @@
 from application import app, db
 from flask import redirect, render_template, request, url_for
-from application.plants.models import Plant
-from application.plants.forms import PlantForm
+from application.pests.models import Pest
+from application.pests.forms import PestForm
 from flask_login import login_required, current_user
 
-@app.route("/plants", methods=["GET"])
+@app.route("/pests", methods=["GET"])
 @login_required
-def plants_index():
-    return render_template("plants/list.html", plants = Plant.query.all())
+def pests_index():
+    return render_template("pests/list.html", pests = Pest.query.all())
 
-@app.route("/plants/new/")
+@app.route("/pests/new/")
 @login_required
-def plants_form():
-    return render_template("plants/new.html", form = PlantForm())
+def pests_form():
+    return render_template("pests/new.html", form = PestForm())
 
-@app.route("/plants/<plant_id>/", methods=["POST"])
+@app.route("/pests/<pest_id>/", methods=["POST"])
 @login_required
-def plants_set_pest(plant_id):
+def pests_set_pest(pest_id):
 
-    t = Plant.query.get(plant_id)
+    t = Pest.query.get(pest_id)
     if t.pest == False:
       t.pest = True
     elif t.pest == True:
       t.pest = False
     db.session().commit()
   
-    return redirect(url_for("plants_index"))
+    return redirect(url_for("pests_index"))
 
-@app.route("/plants/", methods=["POST"])
+@app.route("/pests/", methods=["POST"])
 @login_required
-def plants_create():
-    form = PlantForm(request.form)
+def pests_create():
+    form = PestForm(request.form)
 
     if not form.validate():
-        return render_template("plants/new.html", form = form)
+        return render_template("pests/new.html", form = form)
 
-    t = Plant(form.name.data)
-    t.pest = form.pest.data
-    t.account_id = current_user.id
+    t = Pest(form.name.data, form.control.data)
+ 
 
-    db.session().add(t)
-    db.session().commit()
-
-    return redirect(url_for("plants_index"))
+    return redirect(url_for("pests_index"))
 
 
-@app.route("/plants/", methods=["POST"])
+@app.route("/pests/", methods=["POST"])
 @login_required()
-def plants_delete(plant_id):
+def pests_delete(pest_id):
 
-    db.session.delete(Plant.query.get(plant_id))
+    db.session.delete(Pest.query.get(pest_id))
     db.session().commit()
 
-    return render_template("plants/list.html", plant=current_user.plants)
+    return render_template("pests/list.html", pest=current_user.pests)
 
 
     
