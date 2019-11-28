@@ -15,6 +15,11 @@
           <input type="submit" value="Merkitse tuholaiset"/>
         </form>
             </td>
+            <td>
+                <form method="GET" action="{{ url_for('plants_delete', plant_id=plant.id) }}">
+                  <input type="submit" value="Poista kasvi"/>
+                </form>
+                    </td>
     </tr>
     {% endfor %}
   </table>
