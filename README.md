@@ -40,7 +40,8 @@ Käyttäjä voi ladata ohjelman omalle koneelleen ja käyttää sitä seuraavast
 - ```source venv/bin/activate```
 - ```pip install -r requirements.txt```
 - ```python run.py```
-Sovellus löytyy nyt käyttäjän selaimesta osoitteesta 
+
+Sovellus löytyy nyt käyttäjän selaimesta osoitteesta http://127.0.0.1:5000/
 
 
 
