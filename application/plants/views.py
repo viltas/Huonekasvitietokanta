@@ -44,15 +44,12 @@ def plants_create():
 
     return redirect(url_for("plants_index"))
 
-
-@app.route("/plants/", methods=["POST"])
-@login_required()
+@app.route("/plants/<plant_id>/delete", methods=["POST"])
 def plants_delete(plant_id):
-
-    db.session.delete(Plant.query.get(plant_id))
+    t = Plant.query.get(plant_id)
+    db.session().delete(t)
     db.session().commit()
 
-    return render_template("plants/list.html", plant=current_user.plants)
+    print("Kasvi poistettu")
 
-
-    
+    return redirect(url_for("plants_index"))

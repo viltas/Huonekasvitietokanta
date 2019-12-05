@@ -30,5 +30,14 @@ def species_create():
 
     return redirect(url_for("species_index"))
 
+@app.route("/species/<species_id>/delete", methods=["POST"])
+def species_delete(species_id):
+    t = Species.query.get(species_id)
+    db.session().delete(t)
+    db.session().commit()
+
+    print("Lajikuvaus poistettu")
+
+    return redirect(url_for("species_index"))
 
     

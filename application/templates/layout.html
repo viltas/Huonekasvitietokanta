@@ -10,7 +10,7 @@
 
     
       <nav class="navbar navbar-expand-md navbar-dark bg-dark mb-4">
-          <a class="navbar-brand" href="#">Huonekasvitietokanta</a>
+          <a class="navbar-brand" href="{{url_for('index')}}">Huonekasvitietokanta</a>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
                   <span class="navbar-toggler-icon"></span>
           </button>
@@ -28,9 +28,16 @@
                         <a class="nav-link" href="{{ url_for('species_index') }} ">Listaa lajit</a>
                       </li>
                       <li class="nav-item">
-                        <a class="nav-link" href="{{ url_for('species_form') }} ">Lisää laji</a>
-                      </li>
+                          <a class="nav-link" href="{{ url_for('species_form') }} ">Lisää laji</a>
+                        </li>
                   </ul>
+
+                  <ul class="navbar-nav mr-auto">
+                      <li class="nav-item">
+                          <a class="nav-link" href="{{ url_for('auth_index') }} ">Hallitse käyttäjiä</a>
+                        </li>
+                    </ul>
+
                   {% endif %}
                   <div class="form-inline mt-2 mt-md-0">
               {% if current_user.is_authenticated %}
