@@ -45,5 +45,5 @@ Sovellus löytyy nyt käyttäjän selaimesta osoitteesta
 
 
 ## Tietokantakaavio
-![Tietokantakaavio](https://raw.githubusercontent.com/viltas/Huonekasvitietokanta/master/kasvitietokanta-kaavio.png)
+![Tietokantakaavio](https://raw.githubusercontent.com/viltas/Huonekasvitietokanta/master/documentation/kasvitietokanta-kaavio.png)
 
