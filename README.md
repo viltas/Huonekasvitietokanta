@@ -20,13 +20,28 @@ Ylläpitäjä on ainoa joka voi lisätä järjestelmään uusia kasvilajeja tai 
 ## Toiminnot
 
 - Kasvilajien lisääminen, muokkaus ja poistaminen järjestelmästä
-- Kasvien tietojen muuttaminen
-- Kasvien hakeminen eri hakukriteereillä (valon ja veden tarve, tieteellinen suku jne.)
+- Kasvien tietojen muuttaminen (toteuttamatta)
+- Kasvien hakeminen eri hakukriteereillä (toteuttamatta)
 - Käyttäjän rekisteröityminen
-- Kirjautuminen järjestelmään käyttäjänä tai ylläpitäjänä
+- Kirjautuminen järjestelmään käyttäjänä tai ylläpitäjänä (ylläpito-oikeudet toteuttamatta)
 - Oman kasvin lisääminen sekä nimeäminen
 - Oman kasvin merkitseminen kasvituholaisten saastuttamaksi
-- Etusivulla näkyvät käyttäjät joilla ei ole viel� kasveja
+- Etusivulla näkyvät käyttäjät joilla ei ole vielä kasveja
+
+
+## Asentaminen
+
+Käyttäjä voi ladata ohjelman omalle koneelleen ja käyttää sitä seuraavasti:
+
+1. Lataa projekti zip-tiedostona sivun yläreunasta
+2. Pura kansio ja hakeudu kansioon terminaalissa
+3. Suorita seuraavat komennot:
+- ```python3 -m venv venv```
+- ```source venv/bin/activate```
+- ```pip install -r requirements.txt```
+- ```python run.py```
+Sovellus löytyy nyt käyttäjän selaimesta osoitteesta 
+
 
 
 ## Tietokantakaavio
