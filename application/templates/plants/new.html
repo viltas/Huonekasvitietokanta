@@ -2,6 +2,13 @@
 
 {% block body %}
 <form method="POST" action="{{ url_for('plants_create') }}">
+    <div class="form-group">
+        {{ form.species_id.label }}
+        {{ form.species_id(class="form-control") }}
+        {% for error in form.species_id.errors %}
+          {{ error }}
+        {% endfor %}
+      </div>
   <table>
     <tr>
 <td>

@@ -3,11 +3,13 @@ from flask import redirect, render_template, request, url_for
 from application.plants.models import Plant
 from application.plants.forms import PlantForm
 from flask_login import login_required, current_user
+from application.species.models import Species
+
 
 @app.route("/plants", methods=["GET"])
 @login_required
 def plants_index():
-    return render_template("plants/list.html", plants = Plant.query.all())
+    return render_template("plants/list.html", plants = Plant.query.filter_by(account_id=current_user.id))
 
 @app.route("/plants/new/")
 @login_required
@@ -27,20 +29,24 @@ def plants_set_pest(plant_id):
   
     return redirect(url_for("plants_index"))
 
+
 @app.route("/plants/", methods=["POST"])
 @login_required
 def plants_create():
     form = PlantForm(request.form)
-
     if not form.validate():
         return render_template("plants/new.html", form = form)
 
-    t = Plant(form.name.data)
-    t.pest = form.pest.data
-    t.account_id = current_user.id
+    speciesId = request.form.get('species_id', type=int)
 
-    db.session().add(t)
+    p = Plant(form.name.data)
+    p.species_id = speciesId
+    p.pest = form.pest.data
+    p.account_id = current_user.id
+
+    db.session().add(p)
     db.session().commit()
+
 
     return redirect(url_for("plants_index"))
 

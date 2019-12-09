@@ -8,10 +8,11 @@ class Species(Base):
     
     genus = db.Column(db.String(144), nullable=False)
     epithet = db.Column(db.String(144), nullable=False)
-    water = db.Column(db.Integer, nullable=False)
-    light = db.Column(db.Integer, nullable=False)
+    water = db.Column(db.String(144), nullable=False)
+    light = db.Column(db.String(144), nullable=False)
+    plants = db.relationship('Plant', backref='plant_species', lazy=True)
 
-    ##plants = db.relationship("Plant", backref='species', lazy=True)
+
 
 
     def __init__(self, genus, epithet, name, water, light):

@@ -6,13 +6,13 @@
 <p>
   Huonekasvitietokanta on sovellus, jonka avulla voit pitää kirjaa omistamistasi kasveista. Voit myös hakea uusia kasveja mm. lajin ja valontarpeen perusteella. 
   </p>
-  {% if no_plants is defined %}
+  {% if max_plants is defined %}
 <p>
-  <br>
-   <strong>Näillä käyttäjillä ei ole vielä kasveja:</strong>
-</p>
+    <br>
+     <strong>Eniten kasveja on käyttäjällä:</strong>
+  </p>
 <ul>
-  {% for user in no_plants %}
+  {% for user in max_plants %}
   <li>
     {{user.id}} {{user.name}}
   </li>

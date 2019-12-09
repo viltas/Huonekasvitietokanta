@@ -19,14 +19,14 @@ Ylläpitäjä on ainoa joka voi lisätä järjestelmään uusia kasvilajeja tai 
 
 ## Toiminnot
 
-- Kasvilajien lisääminen, muokkaus ja poistaminen järjestelmästä
+- Kasvilajien lisääminen ja poistaminen järjestelmästä
 - Kasvien tietojen muuttaminen (toteuttamatta)
 - Kasvien hakeminen eri hakukriteereillä (toteuttamatta)
 - Käyttäjän rekisteröityminen
 - Kirjautuminen järjestelmään käyttäjänä tai ylläpitäjänä (ylläpito-oikeudet toteuttamatta)
 - Oman kasvin lisääminen sekä nimeäminen
 - Oman kasvin merkitseminen kasvituholaisten saastuttamaksi
-- Etusivulla näkyvät käyttäjät joilla ei ole vielä kasveja
+- Etusivulla näkyvät tilastot (tällä hetkellä käyttäjä jolla on eniten kasveja)
 
 
 ## Asentaminen

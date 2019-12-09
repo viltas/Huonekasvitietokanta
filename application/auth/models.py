@@ -39,11 +39,11 @@ class User(db.Model):
 
     
     @staticmethod
-    def find_users_with_no_plants():
+    def find_user_with_max_plants():
         stmt = text("SELECT Account.id, Account.name FROM Account"
                      " LEFT JOIN Plant ON Plant.account_id = Account.id"                     
-                     " GROUP BY Account.id"
-                     " HAVING COUNT(Plant.id) = 0")
+                     " ORDER BY Plant.id DESC"
+                     " LIMIT 1")
         res = db.engine.execute(stmt)
 
         response = []
