@@ -31,14 +31,14 @@ class Species(Base):
 
     @staticmethod
     def find_current_species():
-        stmt = text("SELECT Species.id, Species.name FROM Species"
-                     " LEFT JOIN Plant ON Plant.species_id = Species.id"
-                     " GROUP BY Plant.species_id;")
+        stmt = text("SELECT Species.id, Species.name  FROM Species"
+                     " INNER JOIN Plant ON Plant.species_id = Species.id"
+                     " GROUP BY Species.name;")
                      
         res = db.engine.execute(stmt)
 
         response = []
         for row in res:
-            response.append({"name":row[1]})
+            response.append({ "id":row[0], "name":row[1]})
 
         return response    
