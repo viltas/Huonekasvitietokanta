@@ -46,5 +46,5 @@ Sovellus löytyy nyt käyttäjän selaimesta osoitteesta http://127.0.0.1:5000/
 
 
 ## Tietokantakaavio
-![Tietokantakaavio](https://raw.githubusercontent.com/viltas/Huonekasvitietokanta/master/documentation/kasvitietokanta-kaavio.png)
+![Tietokantakaavio](https://github.com/viltas/Huonekasvitietokanta/blob/master/documentation/kasvitietokanta_kaavio.png)
 
