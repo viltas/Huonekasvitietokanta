@@ -33,7 +33,7 @@ class Species(Base):
     def find_current_species():
         stmt = text("SELECT Species.id, Species.name  FROM Species"
                      " INNER JOIN Plant ON Plant.species_id = Species.id"
-                     " GROUP BY Species.name;")
+                     " GROUP BY Species.id;")
                      
         res = db.engine.execute(stmt)
 
