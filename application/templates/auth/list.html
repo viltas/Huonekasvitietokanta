@@ -1,6 +1,9 @@
 {% extends "layout.html" %}
 
 {% block body %}
+<h4>Käyttäjät</h4>
+<br>
+<br>
   <table cellpadding="20">
     <tr>
       <th>id</th>
@@ -15,12 +18,13 @@
       <td>{{ account.username }}</td>
       <td>{{ account.date_created }}</td>
       
-       
+      {% if current_user.id == 1 %}
             <td>
                 <form method="POST" action="{{ url_for('auth_delete', account_id=account.id) }}">
                   <input type="submit" value="Poista käyttäjä"/>
                 </form>
                     </td>
+                    {% endif %} 
     </tr>
     {% endfor %}
   </table>

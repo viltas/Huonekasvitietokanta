@@ -1,6 +1,10 @@
 {% extends "layout.html" %}
 
 {% block body %}
+
+<h4>Kasvilajit</h4>
+<br>
+<br>
   <table cellpadding="20">
     <tr>
       <th>Suku</th>
@@ -18,6 +22,7 @@
       <td>{{ species.water }}</td>
       <td>{{ species.light }}</td>
       <td>
+          {% if current_user.id == 1 %}
           <form method="POST" action="{{ url_for('species_delete', species_id=species.id) }}">
             <input type="submit" value="Poista"/>
           </form>
@@ -28,6 +33,7 @@
                     <input type="submit" value="Muokkaa"/>
                   </form>
                       </td>
+                      {% endif %}
       <td>      
             </td>
     </tr>

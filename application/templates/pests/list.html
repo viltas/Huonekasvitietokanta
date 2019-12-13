@@ -1,9 +1,15 @@
 {% extends "layout.html" %}
 
 {% block body %}
+
+<h4>Tuholaiset</h4>
+<br>
+<br>
+
   <table cellpadding="20">
     <tr>
       <th>Nimi</th>
+      <th>Tuntomerkit</th>
       <th>Torjunta<th>
       
       
@@ -12,8 +18,10 @@
     <tr>
       
       <td>{{ pest.name }}</td>
+      <td>{{ pest.description }}</td>
       <td>{{ pest.control }}</td>
-     
+      
+      {% if current_user.id == 1 %}
       <td>
           <form method="POST" action="{{ url_for('pests_delete', pest_id=pest.id) }}">
             <input type="submit" value="Poista"/>
@@ -25,6 +33,7 @@
                     <input type="submit" value="Muokkaa"/>
                   </form>
                       </td>
+                      {% endif %} 
     </tr>
     {% endfor %}
   </table>

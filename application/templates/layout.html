@@ -3,6 +3,7 @@
   <head>
     <meta charset="utf-8">
     <title>Huonekasvitietokanta</title>
+    <link rel="icon" href="https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/240/apple/237/seedling_1f331.png">
     <link rel="stylesheet"
           href= "https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"> 
 
@@ -20,7 +21,7 @@
 <nav class="navbar navbar-dark bg-dark">
 
     <!-- Navbar brand -->
-    <a class="navbar-brand" href="#">Huonekasvitietokanta</a>
+    <a class="navbar-brand" href="#">&#127793; Huonekasvitietokanta</a>
 
     {% if current_user.is_authenticated %}
         <a href="{{ url_for('auth_logout') }}">Hei, {{ current_user.name }} -- Kirjaudu ulos</a>
@@ -50,10 +51,11 @@
         <li class="nav-item">
             
             {% if current_user.is_authenticated %}
-                      <a class="nav-link" href="{{ url_for('plants_index') }} ">Listaa kasvit</a>
+            <a class="nav-link" href="{{ url_for('plants_form') }} ">Lisää oma kasvi</a>
                     </li>
                     <li class="nav-item">
-                      <a class="nav-link" href="{{ url_for('plants_form') }} ">Lisää kasvi</a>
+                        <a class="nav-link" href="{{ url_for('plants_index') }} ">Listaa omat kasvit</a>
+                      
                     </li>
 
                     <li class="nav-item">
@@ -92,7 +94,7 @@
                         {% if current_user.id == 1 %}
 
                       <li class="nav-item">
-                          <a class="nav-link" href="{{ url_for('auth_index') }} ">Hallitse käyttäjiä</a>
+                        <a class="nav-link" href="{{ url_for('auth_index') }} ">Hallitse käyttäjiä</a>
                         </li>
                         {% endif %}
                         {% endif %}

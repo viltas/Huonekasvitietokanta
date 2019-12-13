@@ -15,6 +15,8 @@ class User(db.Model):
     name = db.Column(db.String(144), nullable=False)
     username = db.Column(db.String(144), nullable=False, unique=True)
     password = db.Column(db.String(144), nullable=False)
+    
+
 
     plants = db.relationship("Plant", backref='account', lazy=True)
 
@@ -23,6 +25,8 @@ class User(db.Model):
         self.name = name
         self.username = username
         self.password = password
+        
+
   
     def get_id(self):
         return self.id
@@ -37,15 +41,18 @@ class User(db.Model):
         return True
 
     
-    def admin(self):
-        if self.id == "1":
+    def userrole(self):
+        if self.id == 1:
             return ["ADMIN"]
         else:
             return []
+    
 
     @classmethod
     def get_session():
         return session
+
+
 
 
     

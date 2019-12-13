@@ -1,14 +1,14 @@
-from application import app, db
+from application import app, db, login_required
 from flask import redirect, render_template, request, url_for
 from application.pests.models import Pest
 from application.plants.models import Plant, PlantPest
 from application.plants.forms import PlantForm, PlantPestForm
-from flask_login import login_required, current_user
+from flask_login import current_user
 from application.species.models import Species
 
 
 @app.route("/plants", methods=["GET"])
-@login_required
+@login_required(role="ANY")
 def plants_index():
     return render_template("plants/list.html", plants = Plant.query.filter_by(account_id=current_user.id))
 
@@ -16,7 +16,7 @@ def plants_index():
 
 
 @app.route("/plants/list_infections", methods=["GET"])
-@login_required
+@login_required(role="ANY")
 def plantpest_index():
     return render_template("plants/list_infections.html", infections = PlantPest.query.filter_by(account_id=current_user.id))    
 
@@ -24,14 +24,14 @@ def plantpest_index():
 
 
 @app.route("/plants/new/")
-@login_required
+@login_required(role="ANY")
 def plants_form():
     return render_template("plants/new.html", form = PlantForm())
 
 
 
 @app.route("/plants/new_infection/")
-@login_required
+@login_required(role="ANY")
 def plantpest_form():
     return render_template("plants/new_infection.html", form = PlantPestForm())    
 
@@ -39,7 +39,7 @@ def plantpest_form():
 
 
 @app.route("/plants/", methods=["POST"])
-@login_required
+@login_required(role="ANY")
 def plants_create():
     form = PlantForm(request.form)
     if not form.validate():
@@ -65,7 +65,7 @@ def plants_create():
 
 
 @app.route("/plants/new_infection/", methods=["POST"])
-@login_required
+@login_required(role="ANY")
 def infection_create():
     form = PlantPestForm(request.form)
     if not form.validate():
@@ -91,6 +91,7 @@ def infection_create():
     return redirect(url_for("plantpest_index"))    
 
 @app.route("/plants/<plant_id>/delete", methods=["POST"])
+@login_required(role="ANY")
 def plants_delete(plant_id):
     t = Plant.query.get(plant_id)
     db.session().delete(t)
@@ -102,6 +103,7 @@ def plants_delete(plant_id):
 
 
 @app.route("/plants/<infection_id>/delete_infection", methods=["POST"])
+@login_required(role="ANY")
 def infection_delete(infection_id):
     i = PlantPest.query.get(infection_id)
     db.session().delete(i)
@@ -115,7 +117,7 @@ def infection_delete(infection_id):
 
 
 @app.route("/plants/edit/<plant_id>", methods=["POST"])
-@login_required
+@login_required(role="ANY")
 def plants_edit(plant_id):
     form = PlantForm(request.form)
     plant = Plant.query.get(plant_id)
@@ -128,7 +130,7 @@ def plants_edit(plant_id):
 
 
 @app.route("/plants/update/<plant_id>", methods=["POST"])
-@login_required
+@login_required(role="ANY")
 def plants_update(plant_id):
 
     form = PlantForm(request.form)

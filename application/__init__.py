@@ -17,6 +17,38 @@ else:
 
 db = SQLAlchemy(app)
 
+
+# oma login_required
+
+from functools import wraps
+from application.auth import models
+from flask_login import current_user 
+
+
+def login_required(role = "ANY"):
+    def wrapper(fn):
+        @wraps(fn)
+        def decorated_view(*args, **kwargs):
+            if not current_user:
+                return login_manager.unauthorized()
+            if not current_user.is_authenticated:
+                return login_manager.unauthorized()
+            unauthorized = False
+
+            if not role == "ANY":
+                unauthorized = True
+                for user_role in current_user.userrole():
+                    if user_role == role:
+                        unauthorized = False
+                        break
+            if unauthorized:
+                return login_manager.unauthorized()
+            return fn(*args, **kwargs)
+        return decorated_view
+    return wrapper
+
+
+
 # oman sovelluksen toiminnallisuudet
 from application import views
 from application import models

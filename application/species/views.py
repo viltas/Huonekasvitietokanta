@@ -1,22 +1,23 @@
-from application import app, db
+from application import app, db, login_required
 from flask import redirect, render_template, request, url_for
 from application.species.models import Species
 from application.plants.models import Plant
+from application.auth.models import User
 from application.species.forms import SpeciesForm
-from flask_login import login_required, current_user
+from flask_login import current_user 
 
 @app.route("/species", methods=["GET"])
-@login_required
+@login_required(role = "ANY")
 def species_index():
     return render_template("species/list.html", species = Species.query.all())
 
 @app.route("/species/new/")
-@login_required
+@login_required(role = "ADMIN")
 def species_form():
     return render_template("species/new.html", form = SpeciesForm())
 
 @app.route("/species/", methods=["POST"])
-@login_required
+@login_required(role="ADMIN")
 def species_create():
     form = SpeciesForm(request.form)
 
@@ -32,6 +33,7 @@ def species_create():
     return redirect(url_for("species_index"))
 
 @app.route("/species/<species_id>/delete", methods=["POST"])
+@login_required(role = "ADMIN")
 def species_delete(species_id):
     t = Species.query.get(species_id)
     db.session().delete(t)
@@ -43,8 +45,9 @@ def species_delete(species_id):
 
 
 @app.route("/species/edit/<species_id>", methods=["POST"])
-@login_required
+@login_required(role = "ADMIN")
 def species_edit(species_id):
+
     form = SpeciesForm(request.form)
     species = Species.query.get(species_id)
     form.genus.data = species.genus
@@ -53,12 +56,14 @@ def species_edit(species_id):
     form.water.data = species.water
     form.light.data = species.light
     
-
+    
     return render_template("species/edit.html", id = species_id, form = form)
+
+        
 
 
 @app.route("/species/update/<species_id>", methods=["POST"])
-@login_required
+@login_required(role = "ADMIN")
 def species_update(species_id):
 
     form = SpeciesForm(request.form)
@@ -68,5 +73,7 @@ def species_update(species_id):
 
     db.session().commit()
     return redirect(url_for("species_index"))
+
+     
 
     

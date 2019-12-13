@@ -1,11 +1,11 @@
 from flask import render_template, request, redirect, url_for
 from flask_login import login_user, logout_user
   
-from application import app, db
+from application import app, db, login_required
 from application.auth.models import User
 from application.auth.forms import LoginForm
 from application.auth.forms import AuthForm
-from flask_login import login_required, current_user
+from flask_login import current_user
 
 
 
@@ -27,9 +27,12 @@ def auth_login():
     return redirect(url_for("index"))
 
 @app.route("/auth", methods=["GET"])
-@login_required
+@login_required(role="ANY")
 def auth_index():
-    return render_template("auth/list.html", auth = User.query.all()) 
+    return render_template("auth/list.html", auth = User.query.filter(User.id != 1).all())
+
+    
+
 
 @app.route("/auth/logout")
 def auth_logout():
@@ -56,6 +59,7 @@ def auth_create():
     return redirect(url_for("auth_index"))
 
 @app.route("/auth/<account_id>/delete", methods=["POST"])
+@login_required(role="ADMIN")
 def auth_delete(account_id):
     t = User.query.get(account_id)
     db.session().delete(t)

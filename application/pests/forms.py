@@ -4,7 +4,7 @@ from application.pests.models import Pest
 
 
 errorA = "Nimen tulee olla 3-30 merkkiä pitkä"
-errorB = "Torjunnan kuvauksen tulee olla 0-500 merkkiä pitkä"
+errorB = "Kuvauksen tulee olla 0-100 merkkiä pitkä"
 
 class Unique(object):
     """ validator that checks field uniqueness """
@@ -22,7 +22,8 @@ class Unique(object):
 
 class PestForm(FlaskForm):
     name = StringField(" Tuholaisen nimi", [validators.Length(min=3, max=30, message=errorA), Unique(Pest, Pest.name)])
-    control = TextAreaField(" Tuholaisen torjuntatapa", [validators.Length(min=0, max=500, message=errorB)])
+    description = TextAreaField(" Tuntomerkit", [validators.Length(min=0, max=300, message=errorB)])
+    control = TextAreaField(" Torjunta", [validators.Length(min=0, max=300, message=errorB)])
     
   
     class Meta:

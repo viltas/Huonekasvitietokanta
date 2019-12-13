@@ -5,11 +5,13 @@ class Pest(Base):
     
    
     name = db.Column(db.String(144), nullable=False)
-    control = db.Column(db.String(250), nullable=False)
+    description = db.Column(db.String(400), nullable=False)
+    control = db.Column(db.String(400), nullable=False)
                        
 
-    def __init__(self, name, control):
+    def __init__(self, name, description, control):
         self.name = name
+        self.description = description
         self.control = control
 
 
