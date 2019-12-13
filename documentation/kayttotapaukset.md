@@ -12,9 +12,9 @@ Sovelluksen etusivulla käyttäjä näkee kaksi yhteenvetokyselyä.
                     HAVING COUNT(Plant.id) > 9`
 
 2) Lista kaikista niistä kasvilajeista jotka ovat sovelluksen (kaikkien!) käyttäjien hallussa.  
-`SELECT Species.id, Species.name  FROM Species"
+`"SELECT Species.id, Species.name  FROM Species"
                      " INNER JOIN Plant ON Plant.species_id = Species.id"
-                     " GROUP BY Species.name;`
+                     " GROUP BY Species.id;"`
 
 
 
