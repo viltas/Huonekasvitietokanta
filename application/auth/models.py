@@ -1,5 +1,6 @@
 from application import db
 from application.models import Base
+from sqlalchemy.sql import func
 
 
 from sqlalchemy.sql import text
@@ -46,7 +47,22 @@ class User(db.Model):
             return ["ADMIN"]
         else:
             return []
-    
+
+
+    @staticmethod
+    def find_greenthumbs():
+        stmt = text("SELECT Account.id, Account.name FROM Account"
+                    " LEFT JOIN Plant ON Plant.account_id = Account.id"
+                    " GROUP BY Account.id"
+                    " HAVING COUNT(Plant.id) > 9")
+        res = db.engine.execute(stmt)
+  
+        response = []
+        for row in res:
+            response.append({"id":row[0], "name":row[1]})
+
+        return response
+
 
     @classmethod
     def get_session():

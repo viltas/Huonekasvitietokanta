@@ -1,5 +1,7 @@
 from application import db
 from application.models import Base
+from sqlalchemy.sql import text
+
 
 class Species(Base):
 
@@ -25,3 +27,18 @@ class Species(Base):
 
     def get_id(self):
         return self.id    
+
+
+    @staticmethod
+    def find_current_species():
+        stmt = text("SELECT Species.id, Species.name FROM Species"
+                     " LEFT JOIN Plant ON Plant.species_id = Species.id"
+                     " GROUP BY Species.id;")
+                     
+        res = db.engine.execute(stmt)
+
+        response = []
+        for row in res:
+            response.append({"name":row[1]})
+
+        return response    

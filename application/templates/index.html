@@ -2,11 +2,45 @@
 
 {% block body %}
   <p>
-  Tervetuloa Huonekasvitietokantaan!</p>
-<p>
+  <h4>Tervetuloa Huonekasvitietokantaan!</h4></p>
+<p><br>
   Huonekasvitietokanta on sovellus, jonka avulla voit pitää kirjaa omistamistasi kasveista. Voit myös hakea uusia kasveja mm. lajin ja valontarpeen perusteella. 
   </p>
   
+<br>
+<br>
+
+{% if greenthumbs is defined %}
+        <p>
+          <b>Todellisia viherpeukaloita ovat:</b>
+        </p>
+        
+        <ul>
+          {% for user in greenthumbs %}
+          <li>
+           <i> {{user.name}} </i>
+          </li>
+          {% endfor %}
+        </ul>
+        
+        {% endif %}
+
+        {% if current_species is defined %}
+        <p>
+          <br><br>
+          <b>Käyttäjien kokoelmista löytyvät seuraavat lajit:</b>
+        </p>
+        
+        <ul>
+          {% for species in current_species %}
+          <li>
+           <i> {{species.name}} </i>
+          </li>
+          {% endfor %}
+        </ul>
+        
+        {% endif %}
+
 
 {% endblock %}
 
