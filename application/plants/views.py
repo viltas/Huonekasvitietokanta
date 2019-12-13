@@ -93,6 +93,12 @@ def infection_create():
 @app.route("/plants/<plant_id>/delete", methods=["POST"])
 @login_required(role="ANY")
 def plants_delete(plant_id):
+
+
+    plantId = plant_id
+    PlantPest.query.filter_by(plant_id = plantId).delete()
+    db.session().commit()
+
     t = Plant.query.get(plant_id)
     db.session().delete(t)
     db.session().commit()
