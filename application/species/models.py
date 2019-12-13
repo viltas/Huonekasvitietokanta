@@ -34,7 +34,7 @@ class Species(Base):
         stmt = text("SELECT Species.id, Species.name FROM Species"
                      " LEFT JOIN Plant ON Plant.species_id = Species.id"
                      " LEFT JOIN Account ON Account.id = Plant.account_id"
-                     " GROUP BY Species.id;")
+                     " GROUP BY Account.id;")
                      
         res = db.engine.execute(stmt)
 
