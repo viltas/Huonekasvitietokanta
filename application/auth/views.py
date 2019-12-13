@@ -3,6 +3,7 @@ from flask_login import login_user, logout_user
   
 from application import app, db, login_required
 from application.auth.models import User
+from application.plants.models import Plant, PlantPest
 from application.auth.forms import LoginForm
 from application.auth.forms import AuthForm
 from flask_login import current_user
@@ -61,6 +62,14 @@ def auth_create():
 @app.route("/auth/<account_id>/delete", methods=["POST"])
 @login_required(role="ADMIN")
 def auth_delete(account_id):
+
+    accountId = account_id
+    
+    PlantPest.query.filter_by(account_id = accountId).delete()
+    db.session().commit()
+    Plant.query.filter_by(account_id = accountId).delete()
+    db.session().commit()
+
     t = User.query.get(account_id)
     db.session().delete(t)
     db.session().commit()
