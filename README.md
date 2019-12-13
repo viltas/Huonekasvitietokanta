@@ -36,7 +36,7 @@ Ylläpitäjä on ainoa joka voi lisätä järjestelmään uusia kasvilajeja tai 
 
 - [Asennusohje](https://github.com/viltas/Huonekasvitietokanta/blob/master/documentation/asennusohje.md)
 - [Käyttöohjeet](https://github.com/viltas/Huonekasvitietokanta/blob/master/documentation/kayttoohje.md)
-- [Userstoryt](https://github.com/viltas/Huonekasvitietokanta/blob/master/documentation/userstoryt.md)
+- [Käyttötapaukset](https://github.com/viltas/Huonekasvitietokanta/blob/master/documentation/kayttotapaukset.md)
 - [Toteuttamatta jääneet toiminnot](https://github.com/viltas/Huonekasvitietokanta/blob/master/documentation/toteuttamatta.md)
 - [CREATE TABLE -lausekkeet](https://github.com/viltas/Huonekasvitietokanta/blob/master/documentation/createtablelausekkeet.md)
 
