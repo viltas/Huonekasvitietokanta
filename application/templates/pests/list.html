@@ -14,11 +14,17 @@
       <td>{{ pest.name }}</td>
       <td>{{ pest.control }}</td>
      
-            <td>
-                <form method="POST" action="{{ url_for('pests_delete', pest_id=pest.id) }}">
-                  <input type="submit" value="Poista tuholaiskuvaus"/>
-                </form>
-                    </td>
+      <td>
+          <form method="POST" action="{{ url_for('pests_delete', pest_id=pest.id) }}">
+            <input type="submit" value="Poista"/>
+          </form>
+              </td>
+
+              <td>
+                  <form method="POST" action="{{ url_for('pests_edit', pest_id=pest.id) }}">
+                    <input type="submit" value="Muokkaa"/>
+                  </form>
+                      </td>
     </tr>
     {% endfor %}
   </table>

@@ -2,7 +2,7 @@ from application import app, db
 from flask import redirect, render_template, request, url_for
 from application.pests.models import Pest
 from application.plants.models import Plant, PlantPest
-from application.plants.forms import PlantForm, PlantEditForm, PlantPestForm
+from application.plants.forms import PlantForm, PlantPestForm
 from flask_login import login_required, current_user
 from application.species.models import Species
 
@@ -27,38 +27,6 @@ def plantpest_index():
 @login_required
 def plants_form():
     return render_template("plants/new.html", form = PlantForm())
-
-
-
-@app.route("/plants/edit/<plant_id>/", methods=["GET", "POST"])
-@login_required
-def plants_edit(plant_id):
-
-    p = Plant.query.get(plant_id)
-    if request.method == "GET":
-        form = PlantEditForm()
-        form.name.data = p.name
-        form.plant_id.data = p.plant_id
-        
-        return render_template( "plants/edit.html", form = form, plant = p)
-
-    form = PlantEditForm(request.form)
-
-    invalid = False
-    if not form.validate():
-        invalid = True    
-
-    if invalid:
-        return render_template(
-            "plants/edit.html", form = form, auction = p)
-
-    p.name = form.name.data
-    p.species_id = form.species_id.data
-
-    db.session().commit()
-
-    return redirect(url_for("plants_index")) 
-
 
 
 
@@ -142,3 +110,35 @@ def infection_delete(infection_id):
     print("Tartunta poistettu")
 
     return redirect(url_for("plantpest_index"))    
+
+
+
+
+@app.route("/plants/edit/<plant_id>", methods=["POST"])
+@login_required
+def plants_edit(plant_id):
+    form = PlantForm(request.form)
+    plant = Plant.query.get(plant_id)
+    form.name.data = plant.name
+    form.species_id.data = plant.species_id
+    
+    
+
+    return render_template("plants/edit.html", id = plant_id, form = form)
+
+
+@app.route("/plants/update/<plant_id>", methods=["POST"])
+@login_required
+def plants_update(plant_id):
+
+    form = PlantForm(request.form)
+
+    speciesId = request.form.get('species_id', type=int)
+    sp = Species.query.get(speciesId)
+
+
+    Plant.query.filter_by(id=plant_id).update(
+        dict(name = form.name.data, species_id = speciesId, species_name = sp.name))
+
+    db.session().commit()
+    return redirect(url_for("plants_index"))    

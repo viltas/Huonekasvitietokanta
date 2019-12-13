@@ -1,0 +1,37 @@
+{% extends "layout.html" %}
+
+{% block body %}
+<form method="POST" action="{{ url_for('pests_update', pest_id = id) }}">
+  <table>
+    <tr>
+<td>
+  {{ form.name.label }}
+</td>
+<td>
+  {{ form.name }}
+</td>
+<td>
+  <ul>
+    {% for error in form.name.errors %}
+    <li>{{ error }}</li>
+    {% endfor %}
+  </ul>
+</td>
+    </tr>
+    <tr>
+<td>
+  {{ form.control.label }}
+</td>
+<td>
+  {{ form.control }}
+</td>
+<td>
+</td>
+    </tr>
+    <tr>
+<td colspan="3">
+  <input type="submit" value="Päivitä tuholaisen tiedot"/>
+</td>
+    </tr>
+</form>
+{% endblock %}

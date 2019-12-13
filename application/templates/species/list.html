@@ -18,10 +18,16 @@
       <td>{{ species.water }}</td>
       <td>{{ species.light }}</td>
       <td>
-        <form method="POST" action="{{ url_for('species_delete', species_id=species.id) }}">
-          <input type="submit" value="Poista lajikuvaus"/>
-        </form>
-            </td>
+          <form method="POST" action="{{ url_for('species_delete', species_id=species.id) }}">
+            <input type="submit" value="Poista"/>
+          </form>
+              </td>
+
+              <td>
+                  <form method="POST" action="{{ url_for('species_edit', species_id=species.id) }}">
+                    <input type="submit" value="Muokkaa"/>
+                  </form>
+                      </td>
       <td>      
             </td>
     </tr>

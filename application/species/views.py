@@ -1,6 +1,7 @@
 from application import app, db
 from flask import redirect, render_template, request, url_for
 from application.species.models import Species
+from application.plants.models import Plant
 from application.species.forms import SpeciesForm
 from flask_login import login_required, current_user
 
@@ -38,6 +39,34 @@ def species_delete(species_id):
 
     print("Lajikuvaus poistettu")
 
+    return redirect(url_for("species_index"))
+
+
+@app.route("/species/edit/<species_id>", methods=["POST"])
+@login_required
+def species_edit(species_id):
+    form = SpeciesForm(request.form)
+    species = Species.query.get(species_id)
+    form.genus.data = species.genus
+    form.epithet.data = species.epithet
+    form.name.data = species.name
+    form.water.data = species.water
+    form.light.data = species.light
+    
+
+    return render_template("species/edit.html", id = species_id, form = form)
+
+
+@app.route("/species/update/<species_id>", methods=["POST"])
+@login_required
+def species_update(species_id):
+
+    form = SpeciesForm(request.form)
+    Species.query.filter_by(id=species_id).update(
+        dict(genus = form.genus.data, epithet = form.epithet.data, name = form.name.data, water = form.water.data, light = form.light.data))
+    Plant.query.filter_by(id=species_id).update(dict(species_name=form.name.data))
+
+    db.session().commit()
     return redirect(url_for("species_index"))
 
     
