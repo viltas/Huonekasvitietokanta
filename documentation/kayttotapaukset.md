@@ -19,12 +19,15 @@ Sovelluksen etusivulla käyttäjä näkee kaksi yhteenvetokyselyä.
 
 
 ## Rekisteröityminen
+
+Käyttäjä voi luoda sovellukseen uuden käyttäjätunnuksen.
+
 `INSERT INTO account (date_created, name, username, password) VALUES (CURRENT_TIMESTAMP, ?, ?, ?)`
 
 
 ## Sisäänkirjautuminen
 
-qwertyuiop
+Käyttäjä voi kirjautua sisään luomallaan käyttäjätunnuksella.
 
 `SELECT account.id AS account_id, account.date_created AS account_date_created, account.name AS account_name, account.username AS account_username, account.password AS account_password 
 FROM account 
@@ -34,7 +37,7 @@ WHERE account.username = ? AND account.password = ?
 
 ## Oman kasvin tallentaminen
 
-qwertyuiop
+Käyttäjä voi tallentaa sovellukseen oman kasvinsa, ja valita sille nimen sekä lajin.
 
 `SELECT plant.id AS plant_id, plant.name AS plant_name, plant.species_id AS plant_species_id, plant.account_id AS plant_account_id, plant.species_name AS plant_species_name 
 FROM plant 
@@ -43,7 +46,7 @@ WHERE plant.account_id = ?`
 
 ## Tuholaistartunnan tallentaminen
 
-qwertyuiop
+Käyttäjä voi merkitä tuholaisten saastuttamasta kasvistaan tiedon sovellukseen. Tieto sisältää kasvin nimen sekä tuholaisen joka sen kimppuun on käynyt.
 
 `SELECT plant_pest.id AS plant_pest_id, plant_pest.plant_id AS plant_pest_plant_id, plant_pest.pest_id AS plant_pest_pest_id, plant_pest.plant_name AS plant_pest_plant_name, plant_pest.pest_name AS plant_pest_pest_name, plant_pest.account_id AS plant_pest_account_id 
 FROM plant_pest 
@@ -52,7 +55,7 @@ WHERE plant_pest.account_id = ?`
 
 ## Kasvilajin tallentaminen (ylläpitäjä)
 
-qwertyuiop
+Ylläpitäjä voi tallentaa sovellukseen uusia kasvilajeja tallentaen niiden tieteellisen nimen (kahdessa osassa), suomenkielisen nimen sekä veden ja valon tarpeen.
 
 `SELECT species.id AS species_id, species.name AS species_name, species.genus AS species_genus, species.epithet AS species_epithet, species.water AS species_water, species.light AS species_light 
 FROM species`
@@ -60,7 +63,7 @@ FROM species`
 
 ## Tuholaisen tallentaminen (ylläpitäjä)
 
-qwertyuiop
+Ylläpitäjä voi tallentaa sovellukseen tietoja tuholaisista. Tiedot koostuvat tuholaisten nimistä, kuvauksesta ja torjuntatavasta.
 
 `SELECT pest.id AS pest_id, pest.name AS pest_name, pest.description AS pest_description, pest.control AS pest_control 
 FROM pest`
@@ -68,7 +71,7 @@ FROM pest`
 
 ## Käyttäjän poistaminen (ylläpitäjä)
 
-qwertyuiop
+Ylläpitäjä voi poistaa muiden käyttäjien tunnuksia sovelluksesta.
 
 `SELECT account.id AS account_id, account.date_created AS account_date_created, account.name AS account_name, account.username AS account_username, account.password AS account_password 
 FROM account 
