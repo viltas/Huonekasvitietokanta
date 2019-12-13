@@ -15,6 +15,6 @@ Ylläpitotunnus voi tällä hetkellä poistaa ja muokata varsin laaja-alaisesti 
 
 Kasviharrastajat käyvät keskenään paljon vaihtokauppaa. Tällaisessa sovelluksessa olisi kenties kannattavaa olla ominaisuus jonka avulla kasvin omistajan voisi vaihtaa. Nykyisellään toki omistajuuden vaihtuessa käyttäjä voi poistaa kasvin omista kasveistaan, ja uusi omistaja voi lisätä kasvin tietokantaan uudestaan. Plant-taulu kantaa mukanaan niin vähän tietoa, että tässä ei varsinaisesti menetetä muuta kuin hieman aikaa.
 
-## Pistokas
+## Emokasvin merkitseminen
 
 Huonekasveista otetaan monesti pistokkaita tai niitä jaetaan leikkaamalla kasvin juurakko moneen osaan. Kasveja voidaan myös kasvattaa siemenistä. Kaikissa näissä tilanteissa harrastajalla voi olla hallussaan kasvi ja sen emokasvi, tai sitten kasvi jonka emokasvi on jollain toisella harrastajalla. Alkuperäiseen sovellussuunnitelmaan kuuluikin toiminnallisuus jolla kasville saattoi halutessaan lisätä emokasvin olemassaolevista kasveista. Jos tämä toiminnallisuus olisi tapahtunut, olisi myös kasvien luovuttaminen eteenpäin ollut ominaisuutena hyödyllisempi.
