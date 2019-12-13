@@ -1,6 +1,7 @@
 from application import db
 from application.models import Base
 
+
 from sqlalchemy.sql import text
 
 
@@ -10,11 +11,9 @@ class User(db.Model):
   
     id = db.Column(db.Integer, primary_key=True)
     date_created = db.Column(db.DateTime, default=db.func.current_timestamp())
-    date_modified = db.Column(db.DateTime, default=db.func.current_timestamp(),
-                              onupdate=db.func.current_timestamp())
 
     name = db.Column(db.String(144), nullable=False)
-    username = db.Column(db.String(144), nullable=False)
+    username = db.Column(db.String(144), nullable=False, unique=True)
     password = db.Column(db.String(144), nullable=False)
 
     plants = db.relationship("Plant", backref='account', lazy=True)
@@ -38,16 +37,15 @@ class User(db.Model):
         return True
 
     
-    @staticmethod
-    def find_user_with_max_plants():
-        stmt = text("SELECT Account.id, Account.name FROM Account"
-                     " LEFT JOIN Plant ON Plant.account_id = Account.id"                     
-                     " ORDER BY Plant.id DESC"
-                     " LIMIT 1")
-        res = db.engine.execute(stmt)
+    def admin(self):
+        if self.id == "1":
+            return ["ADMIN"]
+        else:
+            return []
 
-        response = []
-        for row in res:
-            response.append({"name":row[1]})
+    @classmethod
+    def get_session():
+        return session
 
-        return response
+
+    

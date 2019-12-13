@@ -1,6 +1,7 @@
 # flask-sovellus
 from flask import Flask
 
+
 app = Flask(__name__)
 
 
@@ -25,6 +26,9 @@ from application.plants import views
 
 from application.species import models
 from application.species import views
+
+from application.pests import models
+from application.pests import views
 
 from application.auth import models
 from application.auth import views

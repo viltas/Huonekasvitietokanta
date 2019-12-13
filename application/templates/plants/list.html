@@ -5,26 +5,27 @@
     <tr>
       <th>Kasvi</th>
       <th>Laji<th>
-      <th>Tuholaistartunta</th>
+     
       
     </tr>
     {% for plant in plants %}
     <tr>
       
       <td>{{ plant.name }}</td>
-      <td>{{ plant.species_id }}</td>
-      <td>{{ plant.pest }}</td>
-      <td>
-        
-        <form method="POST" action="{{ url_for('plants_set_pest', plant_id=plant.id) }}">
-          <input type="submit" value="Merkitse tuholaiset"/>
-        </form>
-            </td>
+      <td>{{ plant.species_name }}</td>
+      
+     
             <td>
                 <form method="POST" action="{{ url_for('plants_delete', plant_id=plant.id) }}">
-                  <input type="submit" value="Poista kasvi"/>
+                  <input type="submit" value="Poista"/>
                 </form>
                     </td>
+
+                    <td>
+                        <form method="POST" action="{{ url_for('plants_edit', plant_id=plant.id) }}">
+                          <input type="submit" value="Muokkaa"/>
+                        </form>
+                            </td>
     </tr>
     {% endfor %}
   </table>

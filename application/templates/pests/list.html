@@ -1,0 +1,25 @@
+{% extends "layout.html" %}
+
+{% block body %}
+  <table cellpadding="20">
+    <tr>
+      <th>Nimi</th>
+      <th>Torjunta<th>
+      
+      
+    </tr>
+    {% for pest in pests %}
+    <tr>
+      
+      <td>{{ pest.name }}</td>
+      <td>{{ pest.control }}</td>
+     
+            <td>
+                <form method="POST" action="{{ url_for('pests_delete', pest_id=pest.id) }}">
+                  <input type="submit" value="Poista tuholaiskuvaus"/>
+                </form>
+                    </td>
+    </tr>
+    {% endfor %}
+  </table>
+{% endblock %}

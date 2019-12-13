@@ -1,14 +1,7 @@
 {% extends "layout.html" %}
 
 {% block body %}
-<form method="POST" action="{{ url_for('plants_create') }}">
-    <div class="form-group">
-        {{ form.species_id.label }}
-        {{ form.species_id(class="form-control") }}
-        {% for error in form.species_id.errors %}
-          {{ error }}
-        {% endfor %}
-      </div>
+<form method="POST" action="{{ url_for('pests_create') }}">
   <table>
     <tr>
 <td>
@@ -27,11 +20,17 @@
     </tr>
     <tr>
 <td>
+  {{ form.control.label }}
+</td>
+<td>
+  {{ form.control }}
+</td>
+<td>
 </td>
     </tr>
     <tr>
 <td colspan="3">
-  <input type="submit" value="Lisää uusi kasvi"/>
+  <input type="submit" value="Lisää uusi tuholainen"/>
 </td>
     </tr>
 </form>

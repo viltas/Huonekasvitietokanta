@@ -38,17 +38,21 @@ def pests_create():
     t = Pest(form.name.data, form.control.data)
  
 
+    db.session().add(t)
+    db.session().commit()
+
     return redirect(url_for("pests_index"))
 
 
-@app.route("/pests/", methods=["POST"])
-@login_required()
+@app.route("/pests/<pest_id>/delete", methods=["POST"])
 def pests_delete(pest_id):
-
-    db.session.delete(Pest.query.get(pest_id))
+    t = Pest.query.get(pest_id)
+    db.session().delete(t)
     db.session().commit()
 
-    return render_template("pests/list.html", pest=current_user.pests)
+    print("Tuholainen poistettu")
+
+    return redirect(url_for("pests_index"))
 
 
     
