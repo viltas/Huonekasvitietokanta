@@ -1,0 +1,3 @@
+# Tietokannan CREATE TABLE -lausekkeet
+
+- 
