@@ -1,7 +1,7 @@
 from flask import render_template, request, redirect, url_for
 from flask_login import login_user, logout_user
   
-from application import app, db, login_required
+from application import app, db, bcrypt, login_required
 from application.auth.models import User
 from application.plants.models import Plant, PlantPest
 from application.auth.forms import LoginForm
@@ -16,14 +16,18 @@ def auth_login():
         return render_template("auth/loginform.html", form = LoginForm())
 
     form = LoginForm(request.form)
-    # mahdolliset validoinnit
 
-    user = User.query.filter_by(username=form.username.data, password=form.password.data).first()
+
+    user = User.query.filter_by(username=form.username.data).first()
     if not user:
         return render_template("auth/loginform.html", form = form,
-                                error = "Väärä käyttäjätunnus tai salasana.")
-
-
+                                error = "Käyttäjätunnusta ei löytynyt!")
+    
+    checkPassword = bcrypt.check_password_hash(user.password, form.password.data)
+    if not checkPassword:
+        return render_template("auth/loginform.html", form = form,
+                                error = "Väärä salasana!")
+ 
     login_user(user)
     return redirect(url_for("index"))
 
@@ -52,7 +56,8 @@ def auth_create():
     if not form.validate():
         return render_template("auth/new.html", form = form)
 
-    t = User(form.name.data, form.username.data, form.password.data)
+    hashPassword = bcrypt.generate_password_hash(form.password.data).decode('utf-8')
+    t = User(form.name.data, form.username.data, hashPassword)
 
     db.session().add(t)
     db.session().commit()

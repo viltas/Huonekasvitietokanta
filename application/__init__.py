@@ -1,8 +1,10 @@
 # flask-sovellus
 from flask import Flask
+from flask_bcrypt import Bcrypt
 
 
 app = Flask(__name__)
+bcrypt = Bcrypt(app)
 
 
 # tietokanta
@@ -14,6 +16,7 @@ if os.environ.get("HEROKU"):
 else:
     app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///plants.db"    
     app.config["SQLALCHEMY_ECHO"] = True
+    app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = True
 
 db = SQLAlchemy(app)
 
