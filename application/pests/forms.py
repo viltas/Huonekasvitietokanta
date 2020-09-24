@@ -21,9 +21,12 @@ class Unique(object):
             raise ValidationError(self.message)
 
 class PestForm(FlaskForm):
+
+# define the form for adding a new pest to the database
+
     name = StringField(" Tuholaisen nimi", [validators.Length(min=3, max=30, message=errorA), Unique(Pest, Pest.name)])
-    description = TextAreaField(" Tuntomerkit", [validators.Length(min=0, max=300, message=errorB)])
-    control = TextAreaField(" Torjunta", [validators.Length(min=0, max=300, message=errorB)])
+    description = TextAreaField(" Tuntomerkit", [validators.Length(min=0, max=100, message=errorB)])
+    control = TextAreaField(" Torjunta", [validators.Length(min=0, max=100, message=errorB)])
     
   
     class Meta:

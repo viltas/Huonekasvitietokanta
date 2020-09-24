@@ -4,12 +4,17 @@ from application.auth.models import User
 
 
 
+# define the login form
+
 class LoginForm(FlaskForm):
     username = StringField("Käyttäjätunnus: ")
     password = PasswordField("Salasana: ")    
   
     class Meta:
         csrf = False
+
+
+# error messages for the user form validators
 
 errorA = "Nimen tulee olla 3-30 merkkiä pitkä"
 errorAA = "Käyttäjänimi on jo käytössä"
@@ -30,6 +35,9 @@ class Unique(object):
         check = self.model.query.filter(self.field == field.data).first()
         if check:
             raise ValidationError(self.message)
+
+
+# define the user form
 
 class AuthForm(FlaskForm):
     name = StringField("Nimi: ", [validators.Length(min=3, max=30, message=errorA)])

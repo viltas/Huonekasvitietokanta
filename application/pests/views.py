@@ -6,15 +6,23 @@ from application.pests.forms import PestForm
 
 
 
+# app route for listing the pests in the database
+
 @app.route("/pests", methods=["GET"])
 @login_required(role="ANY")
 def pests_index():
     return render_template("pests/list.html", pests = Pest.query.all())
 
+
+# app route for the new pest form
+
 @app.route("/pests/new/")
 @login_required(role="ADMIN")
 def pests_form():
     return render_template("pests/new.html", form = PestForm())
+
+
+# app route for saving a new pest to the database
 
 @app.route("/pests/<pest_id>/", methods=["POST"])
 @login_required(role="ADMIN")
@@ -29,6 +37,9 @@ def pests_set_pest(pest_id):
   
     return redirect(url_for("pests_index"))
 
+
+# app route for saving a new pest to the database
+
 @app.route("/pests/", methods=["POST"])
 @login_required(role="ADMIN")
 def pests_create():
@@ -39,12 +50,12 @@ def pests_create():
 
     t = Pest(form.name.data, form.description.data, form.control.data)
  
-
     db.session().add(t)
     db.session().commit()
 
     return redirect(url_for("pests_index"))
 
+# app route for deleting a pest
 
 @app.route("/pests/<pest_id>/delete", methods=["POST"])
 @login_required(role="ADMIN")
@@ -58,6 +69,8 @@ def pests_delete(pest_id):
     return redirect(url_for("pests_index"))
 
 
+# app route for editing the pest info
+
 @app.route("/pests/edit/<pest_id>", methods=["POST"])
 @login_required(role="ADMIN")
 def pests_edit(pest_id):
@@ -69,6 +82,8 @@ def pests_edit(pest_id):
 
     return render_template("pests/edit.html", id=pest_id, form=form)
 
+
+# app route for updating the pest info
 
 @app.route("/pests/update/<pest_id>", methods=["POST"])
 @login_required(role="ADMIN")

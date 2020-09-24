@@ -24,6 +24,8 @@ class Unique(object):
         if check:
             raise ValidationError(self.message)
 
+# define the form for marking a plant infected
+
 class PlantPestForm(FlaskForm):
 
     plant_id = QuerySelectField("Kasvi: ", query_factory=lambda: Plant.query.filter_by(account_id=current_user.id), get_label='name')
@@ -32,12 +34,16 @@ class PlantPestForm(FlaskForm):
     class Meta:
         csrf = False
 
+# define the form for adding a new plant to the database (name length min 3, max 30)
+
 class PlantForm(FlaskForm):
     name = StringField(" Kasvin nimi", [validators.Length(min=3, max=30, message=errorA), Unique(Plant, Plant.name)])
     species_id = QuerySelectField("Laji: ", query_factory=lambda: Species.query.all(), get_label='name')
   
     class Meta:
         csrf = False
+
+# define the form for editing a plant already in a database (name length min 3, max 30)
 
 class PlantEditForm(FlaskForm):
     name = StringField(" Kasvin nimi", [validators.Length(min=3, max=30, message=errorA)])

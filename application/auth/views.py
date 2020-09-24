@@ -8,6 +8,7 @@ from application.auth.forms import AuthForm
 from flask_login import current_user
 
 
+# app route for login with validators
 
 @app.route("/auth/login", methods = ["GET", "POST"])
 def auth_login():
@@ -30,23 +31,33 @@ def auth_login():
     login_user(user)
     return redirect(url_for("index"))
 
+
+# app route for listing users (Admin only)
+
 @app.route("/auth", methods=["GET"])
-@login_required(role="ANY")
+@login_required(role="ADMIN")
 def auth_index():
     return render_template("auth/list.html", auth = User.query.filter(User.id != 1).all())
 
     
 
+# app route for logout
 
 @app.route("/auth/logout")
 def auth_logout():
     logout_user()
     return redirect(url_for("index"))
 
+
+# app route for the new user form
+
 @app.route("/auth/new/")
 def auth_new():
     if request.method == "GET":
         return render_template("auth/new.html", form = AuthForm())
+
+
+# app route for adding a new user to the database
 
 @app.route("/auth/", methods=["POST"])
 def auth_create():
@@ -62,6 +73,9 @@ def auth_create():
     db.session().commit()
 
     return redirect(url_for("auth_index"))
+
+
+# app route for deleting a user (Admin only)
 
 @app.route("/auth/<account_id>/delete", methods=["POST"])
 @login_required(role="ADMIN")

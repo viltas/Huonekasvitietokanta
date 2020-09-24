@@ -6,14 +6,12 @@ from sqlalchemy.sql import func
 from sqlalchemy.sql import text
 
 
-class User(db.Model):
+class User(Base):
+
+# create join table for user accounts if not already created
 
     __tablename__ = "account"
-  
-    id = db.Column(db.Integer, primary_key=True)
     date_created = db.Column(db.DateTime, default=db.func.current_timestamp())
-
-    name = db.Column(db.String(144), nullable=False)
     username = db.Column(db.String(144), nullable=False, unique=True)
     password = db.Column(db.String(144), nullable=False)
     
@@ -49,6 +47,7 @@ class User(db.Model):
             return []
 
 
+# find users with no plants
     @staticmethod
     def find_new_users():
         stmt = text("SELECT Account.id, Account.name FROM Account"
