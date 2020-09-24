@@ -10,6 +10,7 @@ class Pest(Base):
                        
 
     def __init__(self, name, description, control):
+        self.name = name
         self.description = description
         self.control = control
 
