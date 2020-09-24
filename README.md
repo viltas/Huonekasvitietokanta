@@ -1,4 +1,6 @@
-# Huonekasvitietokanta (TSOHA harjoitustyö)
+# Huonekasvitietokanta
+
+Ohjelma on laadittu Helsingin yliopiston tietokantasovellus-harjoitustyö -kurssia varten. Ohjelmaa on sittemmin jatkokehitetty.
 
 ## Sovellus Herokussa
 
@@ -29,7 +31,7 @@ Ylläpitäjä on ainoa joka voi lisätä järjestelmään uusia kasvilajeja tai 
 - Kirjautuminen järjestelmään käyttäjänä tai ylläpitäjänä
 - Oman kasvin lisääminen sekä nimeäminen
 - Oman kasvin merkitseminen kasvituholaisten saastuttamaksi
-- Etusivulla näkyvät tilastot (paljon kasveja omistavat käyttäjät sekä yhteenveto kaikkien käyttäjien hallussa olevista lajeista)
+- Etusivulla näkyvät tilastot (käyttäjät joilla ei ole vielä kasveja sekä yhteenveto kaikkien käyttäjien hallussa olevista lajeista)
 
 
 ## Dokumentaatio
@@ -37,7 +39,6 @@ Ylläpitäjä on ainoa joka voi lisätä järjestelmään uusia kasvilajeja tai 
 - [Asennusohje](https://github.com/viltas/Huonekasvitietokanta/blob/master/documentation/asennusohje.md)
 - [Käyttöohjeet](https://github.com/viltas/Huonekasvitietokanta/blob/master/documentation/kayttoohje.md)
 - [Käyttötapaukset](https://github.com/viltas/Huonekasvitietokanta/blob/master/documentation/kayttotapaukset.md)
-- [Toteuttamatta jääneet toiminnot](https://github.com/viltas/Huonekasvitietokanta/blob/master/documentation/toteuttamatta.md)
 - [CREATE TABLE -lausekkeet](https://github.com/viltas/Huonekasvitietokanta/blob/master/documentation/createtablelausekkeet.md)
 
 
