@@ -5,11 +5,11 @@
 
 Sovelluksen etusivulla käyttäjä näkee kaksi yhteenvetokyselyä.
 
-1) Lista käyttäjistä, joilla on 10 tai enemmän kasveja.  
+1) Lista käyttäjistä, joilla ei ole vielä kasveja.  
 `SELECT Account.id, Account.name FROM Account  
                     LEFT JOIN Plant ON Plant.account_id = Account.id  
                     GROUP BY Account.id  
-                    HAVING COUNT(Plant.id) > 9`
+                    HAVING COUNT(Plant.id) = 0`
 
 2) Lista kaikista niistä kasvilajeista jotka ovat sovelluksen (kaikkien!) käyttäjien hallussa.  
 `"SELECT Species.id, Species.name  FROM Species"
