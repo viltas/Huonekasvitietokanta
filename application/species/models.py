@@ -1,6 +1,7 @@
 from application import db
 from application.models import Base
 from sqlalchemy.sql import text
+from flask_login import current_user
 
 
 class Species(Base):
@@ -41,4 +42,8 @@ class Species(Base):
         for row in res:
             response.append({ "id":row[0], "name":row[1]})
 
-        return response    
+        return response
+
+
+
+           

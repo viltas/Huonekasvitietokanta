@@ -1,50 +1,44 @@
 {% extends "layout.html" %}
 
 {% block body %}
-  <p>
-  <h4>Tervetuloa Huonekasvitietokantaan!</h4></p>
-<p><br>
-  Huonekasvitietokanta on sovellus, jonka avulla voit pitää kirjaa omistamistasi kasveista. Voit myös hakea uusia kasveja mm. lajin ja valontarpeen perusteella. 
-  </p>
-  
-<br>
-<br>
+<div class="container">
+  <h3>Tervetuloa huonekasvitietokantaan!</h3>
+  <br>
+  <p>Huonekasvitietokanta on sovellus, jonka avulla voit pitää kirjaa omistamistasi kasveista.
+    Voit myös hakea uusia kasveja mm. lajin ja valontarpeen perusteella.</p>
+  <br><br>
 
-{% if greenthumbs is defined %}
-        <p>
-          <b>Todellisia viherpeukaloita ovat:</b>
-        </p>
-        
-        <ul>
-          {% for user in greenthumbs %}
-          <li>
-           <i> {{user.name}} </i>
-          </li>
-          {% endfor %}
-        </ul>
-        
-        {% endif %}
 
-        {% if current_species is defined %}
-        <p>
-          <br><br>
-          <b>Käyttäjien kokoelmista löytyvät seuraavat lajit:</b>
-        </p>
-        
-        <ul>
-          {% for species in current_species %}
-          <li>
-           <i> {{species.name}} </i>
-          </li>
-          {% endfor %}
-        </ul>
-        
-        {% endif %}
 
+  <h6>Aloittelevia viherpeukaloita ovat:</h6>
+  <br>
+
+  <ul>
+    {% for user in new_users %}
+    <li>
+      <i> {{user.name}} </i>
+    </li>
+    {% endfor %}
+  </ul>
+
+
+
+  {% if current_species is defined %}
+  <br><br>
+  <h6>Käyttäjien kokoelmista löytyvät seuraavat lajit:</h6>
+  <br>
+
+  <ul>
+    {% for species in current_species %}
+    <li>
+      <i> {{species.name}} </i>
+    </li>
+    {% endfor %}
+
+
+  </ul>
+
+  {% endif %}
+</div>
 
 {% endblock %}
-
-
-
-
-        

@@ -24,13 +24,15 @@
       {% if current_user.id == 1 %}
       <td>
           <form method="POST" action="{{ url_for('pests_delete', pest_id=pest.id) }}">
-            <input type="submit" value="Poista"/>
+            <button type="submit" class="btn btn-danger btn-sm">Poista</button>
+
           </form>
               </td>
 
               <td>
                   <form method="POST" action="{{ url_for('pests_edit', pest_id=pest.id) }}">
-                    <input type="submit" value="Muokkaa"/>
+                    <button type="submit" class="btn btn-primary btn-sm">Muokkaa</button>
+
                   </form>
                       </td>
                       {% endif %} 

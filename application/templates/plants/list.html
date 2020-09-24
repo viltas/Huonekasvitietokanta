@@ -4,32 +4,35 @@
 <h4>Omat kasvisi</h4>
 <br>
 <br>
-  <table cellpadding="20">
-    <tr>
-      <th>Kasvi</th>
-      <th>Laji<th>
-     
-      
-    </tr>
-    {% for plant in plants %}
-    <tr>
-      
-      <td>{{ plant.name }}</td>
-      <td>{{ plant.species_name }}</td>
-      
-     
-            <td>
-                <form method="POST" action="{{ url_for('plants_delete', plant_id=plant.id) }}">
-                  <input type="submit" value="Poista"/>
-                </form>
-                    </td>
+<table cellpadding="20">
+  <tr>
+    <th>Kasvi</th>
+    <th>Laji
+    <th>
 
-                    <td>
-                        <form method="POST" action="{{ url_for('plants_edit', plant_id=plant.id) }}">
-                          <input type="submit" value="Muokkaa"/>
-                        </form>
-                            </td>
-    </tr>
-    {% endfor %}
-  </table>
+
+  </tr>
+  {% for plant in plants %}
+  <tr>
+
+    <td>{{ plant.name }}</td>
+    <td>{{ plant.species_name }}</td>
+
+
+    <td>
+      <form method="POST" action="{{ url_for('plants_delete', plant_id=plant.id) }}">
+        <button type="submit" class="btn btn-danger btn-sm">Poista</button>
+
+      </form>
+    </td>
+
+    <td>
+      <form method="POST" action="{{ url_for('plants_edit', plant_id=plant.id) }}">
+        <button type="submit" class="btn btn-primary btn-sm">Muokkaa</button>
+
+      </form>
+    </td>
+  </tr>
+  {% endfor %}
+</table>
 {% endblock %}

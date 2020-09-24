@@ -26,7 +26,7 @@ class SpeciesForm(FlaskForm):
     name = StringField("Nimi: ", [validators.Length(min=3, max=30, message=errorC), Unique(Species, Species.name)])
     water = SelectField(u'Veden tarve: ', choices=[('vähäinen', 'vähäinen'), ('kohtalainen', 'kohtalainen'), ('tasainen kosteus', 'tasainen kosteus')])
     light = SelectField(u'Valon tarve: ', choices=[('varjo', 'varjo'), ('puolivarjo', 'puolivarjo'), ('hajavalo', 'hajavalo'), ('runsas valo', 'runsas valo')])
-  
+
     class Meta:
         csrf = False
 

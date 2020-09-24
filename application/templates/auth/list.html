@@ -4,28 +4,27 @@
 <h4>Käyttäjät</h4>
 <br>
 <br>
-  <table cellpadding="20">
-    <tr>
-      <th>id</th>
-      <th>Nimi</th>
-      <th>Käyttäjätunnus</th>
-      <th>Tunnus luotu</th>
-    </tr>
-    {% for account in auth %}
-    <tr>
-      <td>{{ account.id }}</td>
-      <td>{{ account.name }}</td>
-      <td>{{ account.username }}</td>
-      <td>{{ account.date_created }}</td>
-      
-      {% if current_user.id == 1 %}
-            <td>
-                <form method="POST" action="{{ url_for('auth_delete', account_id=account.id) }}">
-                  <input type="submit" value="Poista käyttäjä"/>
-                </form>
-                    </td>
-                    {% endif %} 
-    </tr>
-    {% endfor %}
-  </table>
+<table cellpadding="20">
+  <tr>
+    <th>Nimi</th>
+    <th>Käyttäjätunnus</th>
+    <th>Tunnus luotu</th>
+  </tr>
+  {% for account in auth %}
+  <tr>
+    <td>{{ account.name }}</td>
+    <td>{{ account.username }}</td>
+    <td>{{ account.date_created }}</td>
+
+    {% if current_user.id == 1 %}
+    <td>
+      <form method="POST" action="{{ url_for('auth_delete', account_id=account.id) }}">
+        <button type="submit" class="btn btn-danger btn-sm">Poista käyttäjä</button>
+
+      </form>
+    </td>
+    {% endif %}
+  </tr>
+  {% endfor %}
+</table>
 {% endblock %}

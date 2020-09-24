@@ -12,4 +12,4 @@ from application.species.models import Species
 @app.route('/')
 def index():
 
-    return render_template("index.html", current_species=Species.find_current_species(), greenthumbs=User.find_greenthumbs())    
+    return render_template("index.html", current_species=Species.find_current_species(), new_users=User.find_new_users())    

@@ -5,26 +5,28 @@
 <h4>Tartunnat</h4>
 <br>
 <br>
-  <table cellpadding="20">
-    <tr>
-      <th>Kasvi</th>
-      <th>Tuholainen<th>
-     
-      
-    </tr>
-    {% for infection in infections %}
-    <tr>
-      
-      <td>{{ infection.plant_name }}</td>
-      <td>{{ infection.pest_name }}</td>
-      
-     
-            <td>
-                <form method="POST" action="{{ url_for('infection_delete', infection_id=infection.id) }}">
-                  <input type="submit" value="Poista tartunta"/>
-                </form>
-                    </td>
-    </tr>
-    {% endfor %}
-  </table>
+<table cellpadding="20">
+  <tr>
+    <th>Kasvi</th>
+    <th>Tuholainen
+    <th>
+
+
+  </tr>
+  {% for infection in infections %}
+  <tr>
+
+    <td>{{ infection.plant_name }}</td>
+    <td>{{ infection.pest_name }}</td>
+
+
+    <td>
+      <form method="POST" action="{{ url_for('infection_delete', infection_id=infection.id) }}">
+        <button type="submit" class="btn btn-primary btn-sm">Poista tartunta</button>
+
+      </form>
+    </td>
+  </tr>
+  {% endfor %}
+</table>
 {% endblock %}

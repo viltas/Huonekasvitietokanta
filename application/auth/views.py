@@ -1,6 +1,5 @@
 from flask import render_template, request, redirect, url_for
 from flask_login import login_user, logout_user
-  
 from application import app, db, bcrypt, login_required
 from application.auth.models import User
 from application.plants.models import Plant, PlantPest

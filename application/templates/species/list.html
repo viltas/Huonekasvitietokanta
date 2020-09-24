@@ -5,38 +5,38 @@
 <h4>Kasvilajit</h4>
 <br>
 <br>
-  <table cellpadding="20">
-    <tr>
-      <th>Suku</th>
-      <th>Epiteetti</th>
-      <th>Nimi</th>
-      <th>Veden tarve</th>
-      <th>Valon tarve</th>
-      
-    </tr>
-    {% for species in species %}
-    <tr>
-      <td>{{ species.genus }}</td>
-      <td>{{ species.epithet }}</td>
-      <td>{{ species.name }}</td>
-      <td>{{ species.water }}</td>
-      <td>{{ species.light }}</td>
-      <td>
-          {% if current_user.id == 1 %}
-          <form method="POST" action="{{ url_for('species_delete', species_id=species.id) }}">
-            <input type="submit" value="Poista"/>
-          </form>
-              </td>
+<table cellpadding="20">
+  <tr>
+    <th>Suku</th>
+    <th>Epiteetti</th>
+    <th>Nimi</th>
+    <th>Veden tarve</th>
+    <th>Valon tarve</th>
 
-              <td>
-                  <form method="POST" action="{{ url_for('species_edit', species_id=species.id) }}">
-                    <input type="submit" value="Muokkaa"/>
-                  </form>
-                      </td>
-                      {% endif %}
-      <td>      
-            </td>
-    </tr>
-    {% endfor %}
-  </table>
+  </tr>
+  {% for species in species %}
+  <tr>
+    <td>{{ species.genus }}</td>
+    <td>{{ species.epithet }}</td>
+    <td>{{ species.name }}</td>
+    <td>{{ species.water }}</td>
+    <td>{{ species.light }}</td>
+    <td>
+      {% if current_user.id == 1 %}
+      <form method="POST" action="{{ url_for('species_delete', species_id=species.id) }}">
+        <button type="submit" class="btn btn-danger btn-sm">Poista</button>
+      </form>
+    </td>
+
+    <td>
+      <form method="POST" action="{{ url_for('species_edit', species_id=species.id) }}">
+        <button type="submit" class="btn btn-primary btn-sm">Muokkaa</button>
+      </form>
+    </td>
+    {% endif %}
+    <td>
+    </td>
+  </tr>
+  {% endfor %}
+</table>
 {% endblock %}

@@ -50,11 +50,11 @@ class User(db.Model):
 
 
     @staticmethod
-    def find_greenthumbs():
+    def find_new_users():
         stmt = text("SELECT Account.id, Account.name FROM Account"
                     " LEFT JOIN Plant ON Plant.account_id = Account.id"
                     " GROUP BY Account.id"
-                    " HAVING COUNT(Plant.id) > 9")
+                    " HAVING COUNT(Plant.id) = 0")
         res = db.engine.execute(stmt)
   
         response = []
