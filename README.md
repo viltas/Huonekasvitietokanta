@@ -2,7 +2,7 @@
 
 Ohjelma on laadittu Helsingin yliopiston tietokantasovellus-harjoitustyö -kurssia varten. Ohjelmaa on sittemmin jatkokehitetty.
 
-Sovellus käyttää SQLite-tietokannanhallintajärjestelmää, Pythonin Flask-kirjastoa, SQLAlchemy-kirjastoa sekä Jinja-kirjastoa HTML-näkymien luomiseen. HTML-näkymien ulkoasussa käytetään myös bootstrap-kirjastoa.
+Sovellus käyttää Herokussa PostgreSQL-tietokannanhallintajärjestelmää, Pythonin Flask-kirjastoa, SQLAlchemy-kirjastoa sekä Jinja-kirjastoa HTML-näkymien luomiseen. HTML-näkymien ulkoasussa käytetään myös bootstrap-kirjastoa.
 
 
 ## Sovellus Herokussa
