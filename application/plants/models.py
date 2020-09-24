@@ -4,7 +4,8 @@ from application.models import Base
 
 # create join table for plants and pests if not already created
 
-class PlantPest(Base):
+class PlantPest(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
     plant_id = db.Column(db.Integer, db.ForeignKey('plant.id'))
     pest_id = db.Column(db.Integer, db.ForeignKey('pest.id'))
     plant_name = db.Column(db.String(144), nullable=True)
